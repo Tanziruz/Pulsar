@@ -1,23 +1,22 @@
-import { Canvas, useFrame, type ThreeElement } from "@react-three/fiber"
-import { CameraControls, OrbitControls, Stars, useHelper } from "@react-three/drei"
-import { DirectionalLightHelper, DirectionalLight } from "three"
+import { Canvas, useFrame} from "@react-three/fiber"
+import { CameraControls, Stars } from "@react-three/drei"
 import { useRef } from "react"
 import { Bloom, EffectComposer } from "@react-three/postprocessing"
 import * as THREE from "three"
 
-function DirectionalLightWithHelper() {
-  const light = useRef<DirectionalLight | null>(null)
-  useHelper(light, DirectionalLightHelper, 1, 'red')
-  return (
-    <directionalLight
-      // castShadow
-      intensity={5}
-      ref={light}
-      position={[5, 5, 5]}
-      color="white"
-    />
-  )
-}
+// function DirectionalLightWithHelper() {
+//   const light = useRef<DirectionalLight | null>(null)
+//   useHelper(light, DirectionalLightHelper, 1, 'red')
+//   return (
+//     <directionalLight
+//       // castShadow
+//       intensity={5}
+//       ref={light}
+//       position={[5, 5, 5]}
+//       color="white"
+//     />
+//   )
+// }
 function RotatingMesh() {
   const waveRotation = useRef<THREE.Mesh | null>(null)
   useFrame(() => {
@@ -55,10 +54,10 @@ const App = () => {
   <ambientLight />
   <EffectComposer>
     <Bloom
-      intensity={12} // The bloom intensity.
-      kernelSize={3} // The bloom kernel size.
-      luminanceThreshold={0.05} // The luminance threshold. Lower to include more bright areas.
-      luminanceSmoothing={0.025} // Smoothness of the luminance threshold. Range is [0, 1].
+      intensity={12}
+      kernelSize={3}
+      luminanceThreshold={0.05}
+      luminanceSmoothing={0.025}
     />
   </EffectComposer>
   {/* <DirectionalLightWithHelper /> */}
